@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIICENCE_GENERATIONS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 0px;">
+            <img src="/ico/m.e.jpg" alt="Logo" style="max-width: 150px;">
+        </div>
+        <h1>Generador de Carnet</h1>
+        <form id="carnetForm">
+            <label for="photo">Foto:</label>
+            <input type="file" id="photo" accept="image/*" required>
+            
+            <label for="fullName">Nombre Completo:</label>
+            <input type="text" id="fullName" placeholder="Nombre Completo" required>
+
+            <label for="lastName">Apellidos:</label>
+            <input type="text" id="lastName" placeholder="Apellidos" required>
+
+            <label for="cc">Cédula:</label>
+            <input type="text" id="cc" placeholder="Número de CC" required>
+
+            <label for="rh">RH:</label>
+            <input type="text" id="rh" placeholder="RH" required>
+
+            <label for="arl">ARL:</label>
+            <input type="text" id="arl" placeholder="ARL" required>
+
+            <button type="button" id="generatePdf">Generar Carnet</button>
+        </form>
+        <div id="preview"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
