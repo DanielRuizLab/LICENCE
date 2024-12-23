@@ -45,7 +45,13 @@ document.getElementById('generatePdf').addEventListener('click', function () {
             doc.addImage(photoData, 'JPEG', photoX, 1.5, 2.5, 2.5); 
 
             doc.setFontSize(10);
+
+            doc.setFont("helvetica", "bold");
+            doc.setTextColor(100, 149, 237); 
             doc.text(`${fullName}`, 1.4, 4.5);
+            
+            doc.setFont("helvetica", "normal");
+            doc.setTextColor(0, 0, 0);
             doc.text(`${lastName}`, 1.6, 5); 
             doc.text(`CC: ${cc}`, 1.2, 5.5); 
             doc.text(`RH: ${rh}`, 1.7, 6); 
@@ -53,7 +59,7 @@ document.getElementById('generatePdf').addEventListener('click', function () {
             doc.setFontSize(8);
             doc.text("www.multiempleos.com.co", 0.9, 7); 
 
-            doc.setDrawColor(173, 216, 230); 
+            doc.setDrawColor(15, 75, 155); 
             doc.setLineWidth(0.5);
             doc.line(0, 7.5, 8, 7.5); 
 
