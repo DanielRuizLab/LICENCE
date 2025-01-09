@@ -1,13 +1,24 @@
 document.getElementById('generatePdf').addEventListener('click', function () {
     const photo = document.getElementById('photo').files[0];
-    const fullName = document.getElementById('fullName').value;
-    const lastName = document.getElementById('lastName').value;
+    const fullName = document.getElementById('fullName').value.toUpperCase();
+    const lastName = document.getElementById('lastName').value.toUpperCase();
     const cc = document.getElementById('cc').value;
-    const rh = document.getElementById('rh').value;
+    const rh = document.getElementById('rh').value.toUpperCase();
     const arl = document.getElementById('arl').value;
 
     if (!photo || !fullName || !lastName || !cc || !rh || !arl) {
         alert("Por favor complete todos los campos.");
+        return;
+    }
+
+    if (!/^\d+$/.test(cc)) {
+        alert("El campo CC solo puede contener números.");
+        return;
+    }
+
+    const validBloodTypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+    if (!validBloodTypes.includes(rh)) {
+        alert("El campo RH solo puede contener tipos de sangre válidos (A+, A-, B+, B-, AB+, AB-, O+, O-).");
         return;
     }
 
@@ -107,7 +118,7 @@ document.getElementById('generatePdf').addEventListener('click', function () {
             const bgImage = 'ico/logome2.png';
 
             try {
-                doc.addImage(logo, 'PNG', 1.7, 3.5, 2.5, 1.2);
+                doc.addImage(logo, 'PNG', 1.7, 3.3, 2.5, 1.2);
             } catch (error) {
                 console.error('Error al agregar el fondo: ', error);
             }
