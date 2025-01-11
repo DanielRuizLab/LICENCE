@@ -46,60 +46,56 @@ input[type="file"] {
     transition: border-color 0.3s ease;
 }
 
-input[type="text"]:focus,
-input[type="file"]:focus {
-    border-color: #0078D7;
-    outline: none;
-    background-color: #ffffff;
+body {
+    background-image: url('ico/Fond.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 50px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    background: linear-gradient(90deg, #0078D7, #0056a1);
-    color: #ffffff;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #230085;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background: linear-gradient(90deg, #0056a1, #004080);
-    transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(0);
-}
-
-#preview {
-    margin-top: 20px;
-    text-align: center;
-}
-
-img {
-    display: block;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 150px;
-    border: 3px solid #0078D7;
-}
-
-form {
-    animation: fadeIn 0.5s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    background-color: #45a049;
 }
