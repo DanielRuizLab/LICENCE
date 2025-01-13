@@ -44,7 +44,7 @@ document.getElementById('generatePdf').addEventListener('click', function () {
         }
 
         try {
-            doc.addImage(logo, 'PNG', 0.4, 0.3, 1.5, 0.5);
+            doc.addImage(logo, 'PNG', 0.4, 0.1, 1.5, 0.8);
         } catch (error) {
             console.error('Error al agregar el fondo: ', error);
         }
@@ -53,61 +53,55 @@ document.getElementById('generatePdf').addEventListener('click', function () {
         image.src = photoData;
         image.onload = function () {
             const photoX = (8 - 2.5) / 2 - 1.5;
-            doc.addImage(photoData, 'JPEG', photoX, 0.9, 2.5, 3);
+            doc.addImage(photoData, 'JPEG', photoX, 1.3, 2.5, 2.7);
 
-            // Nombre
-            doc.setFont("helvetica", "bold"); // Fuente y estilo
-            doc.setFontSize(13); // Tamaño
-            doc.setTextColor(100, 149, 237); // Color
+            doc.setFont("helvetica", "bold"); 
+            doc.setFontSize(13); 
+            doc.setTextColor(100, 149, 237); 
             const pageWidth = doc.internal.pageSize.getWidth();
             const fullNameWidth = doc.getTextWidth(fullName);
             const fullNameX = (pageWidth - fullNameWidth) / 2;
-            doc.text(fullName, fullNameX, 4.5); // Centrando el texto
+            doc.text(fullName, fullNameX, 4.5); 
 
-            // Apellido
-            doc.setFont("helvetica", "normal"); // Cambia estilo a normal
-            doc.setFontSize(8); // Tamaño más pequeño
-            doc.setTextColor(0, 0, 0); // Color negro
+       
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(8); 
+            doc.setTextColor(0, 0, 0);
             const lastNameWidth = doc.getTextWidth(lastName);
             const lastNameX = (pageWidth - lastNameWidth) / 2;
-            doc.text(lastName, lastNameX, 5); // Centrando el apellido
+            doc.text(lastName, lastNameX, 5); 
 
-            // CC
-            doc.setFontSize(8); // Tamaño reducido
+            doc.setFontSize(8); 
             doc.text(`C.C. ${cc}`, 1.4, 5.5);
 
             // RH
-            doc.setFontSize(8); // Mantén el tamaño reducido
+            doc.setFontSize(8); 
             doc.text(`RH: ${rh}`, 1.9, 6);
 
             // ARL
-            doc.setFontSize(8); // Igual tamaño reducido
+            doc.setFontSize(8); 
             doc.text(`ARL: ${arl}`, 1.7, 6.3);
 
-            // Enlace del sitio web
             doc.setFontSize(9);
             doc.text("www.multiempleos.com.co", 0.7, 6.6);
 
-            // Línea de separación
             doc.setDrawColor(15, 75, 155);
             doc.setLineWidth(0.5);
             doc.line(0, 7.5, 8, 7.5);
 
-            // Nueva página
             doc.addPage();
 
-            // Texto largo
             const longText = ` Este documento identifica al portador
-        como empleado en misión de
-                MULTIEMPLEOS S.A.   
+       como empleado en misión de
+            MULTIEMPLEOS S.A.   
                 
     Es deber del portador devolverlo a
-                MULTIEMPLEOS S.A.
-    al terminar de prestar sus servicios.
+            MULTIEMPLEOS S.A.
+   al terminar de prestar sus servicios.
 
     En caso de daño o pérdida de este
-    documento, el trabajador responderá
-                        por su valor.
+   documento, el trabajador responderá
+                       por su valor.
 
 
 
@@ -115,33 +109,34 @@ document.getElementById('generatePdf').addEventListener('click', function () {
 
 
 
+
+
+                        
 
                        ARL SURA:
     018000511414 O  018000941414
 
     WHATSAPP MULTIEMPLEOS S.A
-                       300 187 6692`;
+                     300 187 6692`;
 
             const textWidth = 7.5;
             const textLines = doc.splitTextToSize(longText, textWidth);
 
-            // Logos en la segunda página
             const logoSura = 'ico/logosura.png';
             const bgImage2 = 'ico/logome2.png';
 
             try {
-                doc.addImage(logoSura, 'PNG', 1.7, 3.3, 2.5, 1.2);
+                doc.addImage(logoSura, 'PNG', 1.4, 3.3, 2.5, 1.2);
             } catch (error) {
                 console.error('Error al agregar el logo Sura: ', error);
             }
 
             try {
-                doc.addImage(bgImage2, 'PNG', 1.6, 7, 2, 0.6);
+                doc.addImage(bgImage2, 'PNG', 1.5, 7, 2.1, 0.9);
             } catch (error) {
                 console.error('Error al agregar el fondo: ', error);
             }
 
-            // Añadir texto largo
             doc.setFontSize(6);
             let y = 1;
             textLines.forEach(line => {
@@ -149,7 +144,6 @@ document.getElementById('generatePdf').addEventListener('click', function () {
                 y += 0.2;
             });
 
-            // Guardar el PDF
             doc.save(`${fullName}_${lastName}_Carnet.pdf`);
         };
 
